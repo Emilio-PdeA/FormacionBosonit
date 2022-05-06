@@ -1,6 +1,9 @@
 package com.formacion.bosonit.EJ2.infrastructure.controller.dto.input;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Setter
 @Getter

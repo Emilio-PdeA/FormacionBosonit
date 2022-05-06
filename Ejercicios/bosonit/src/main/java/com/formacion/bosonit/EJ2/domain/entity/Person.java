@@ -1,6 +1,6 @@
 package com.formacion.bosonit.EJ2.domain.entity;
 
-
+import com.formacion.bosonit.EJ2.domain.exception.PersonUnprocessableException;
 import com.formacion.bosonit.EJ2.infrastructure.controller.dto.input.PersonInputDTO;
 import lombok.Data;
 import lombok.NonNull;
@@ -51,34 +51,34 @@ public class Person {
 
     Date termination_date;
 
-    public void setUser(String usr) throws Exception{
-        if (usr == null){throw new Exception("User cannot be null");}
-        if (usr.length()>10){throw new Exception("Length of user must not exceed 10 characters.");}
-        if(usr.length()<6){throw new Exception("Length of user must be greater than 6.");}
+    public void setUser(String usr) throws PersonUnprocessableException{
+        if (usr == null){throw new PersonUnprocessableException("User cannot be null");}
+        if (usr.length()>10){throw new PersonUnprocessableException("Length of user must not exceed 10 characters.");}
+        if(usr.length()<6){throw new PersonUnprocessableException("Length of user must be greater than 6.");}
         this.user=usr;
     }
 
-    public void setPassword(String pwd) throws Exception{
-        if (pwd==null){throw new Exception("Password cannot be null");}
+    public void setPassword(String pwd) throws PersonUnprocessableException{
+        if (pwd==null){throw new PersonUnprocessableException("Password cannot be null");}
         this.password=pwd;
     }
 
-    public void setCompEmail(String compEmail) throws Exception{
-        if(compEmail==null){throw new Exception("Company Email cannot be null");}
+    public void setCompEmail(String compEmail) throws PersonUnprocessableException{
+        if(compEmail==null){throw new PersonUnprocessableException("Company Email cannot be null");}
         this.compEmail = compEmail;
     }
 
-    public void setPersEmail(String persEmail) throws Exception{
-        if (persEmail==null){throw new Exception("Personal Email cannto be null");}
+    public void setPersEmail(String persEmail) throws PersonUnprocessableException{
+        if (persEmail==null){throw new PersonUnprocessableException("Personal Email cannto be null");}
         this.persEmail=persEmail;
     }
 
-    public void setCity(String city) throws Exception{
-        if(city==null){throw new Exception("City cannot be null");}
+    public void setCity(String city) throws PersonUnprocessableException{
+        if(city==null){throw new PersonUnprocessableException("City cannot be null");}
         this.city=city;
     }
 
-    public void setCreated_date() throws Exception{
+    public void setCreated_date() throws PersonUnprocessableException{
         LocalDateTime now = LocalDateTime.now();
         this.created_date = new Date();
     }
@@ -107,7 +107,7 @@ public class Person {
     }
 
     public Person(){}
-    public Person(PersonInputDTO personInputDTO) throws Exception{
+    public Person(PersonInputDTO personInputDTO) throws PersonUnprocessableException {
         setUser(personInputDTO.getUser());
         setPassword(personInputDTO.getPassword());
         setName(personInputDTO.getName());
