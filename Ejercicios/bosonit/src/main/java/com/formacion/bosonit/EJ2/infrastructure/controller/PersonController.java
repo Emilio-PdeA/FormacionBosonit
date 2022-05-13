@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.List;
 
-@RestController
+@RestController("PersonControllerEJ2")
 @RequestMapping("EJ2")
 public class PersonController {
 

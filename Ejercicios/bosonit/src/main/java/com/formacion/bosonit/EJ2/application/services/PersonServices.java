@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Service
+@Service("PersonServices_EJ2")
 public class PersonServices implements PersonServicesInter {
 
     @Autowired

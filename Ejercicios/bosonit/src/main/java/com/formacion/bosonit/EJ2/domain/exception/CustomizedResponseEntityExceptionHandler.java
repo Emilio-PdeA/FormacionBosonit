@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.Date;
 
-@RestControllerAdvice
+@RestControllerAdvice(value = "CustomizedResponse_EJ2")
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(PersonNotFoundException.class)
