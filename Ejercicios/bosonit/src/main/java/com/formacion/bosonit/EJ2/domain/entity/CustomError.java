@@ -7,10 +7,10 @@ import java.util.Date;
 @Getter
 public class CustomError {
 
-    private final Date timestamp;
-    private final String message;
-    private final String details;
-    private final String httpCodeMessage;
+    private Date timestamp;
+    private String message;
+    private String details;
+    private String httpCodeMessage;
 
     public CustomError(Date timestamp, String message, String details, String httpCodeMessage){
         super();

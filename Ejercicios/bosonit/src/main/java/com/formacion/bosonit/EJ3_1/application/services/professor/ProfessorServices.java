@@ -29,11 +29,22 @@ public class ProfessorServices implements ProfessorServicesInter{
     PersonServicesInter personServicesInter;
 
     @Override
-    public ProfessorOutputDTO findUserId(String id){
+    public void createFiveProfessor(){
+        for (int i=1;i<=5;++i){
+            ProfessorInputDTO professorInputDTO =
+                    new ProfessorInputDTO(i,"Professor number " + i,"Java");
+            Person_EJ3 person = personServicesInter.getPerson(professorInputDTO.getId_person());
+            Professor_EJ3 prof = new Professor_EJ3(professorInputDTO,person);
+            professorRepository.save(prof);
+        }
+    }
+
+    @Override
+    public Professor_EJ3 findUserId(String id){
         Optional<Professor_EJ3> prof =
                 Optional.ofNullable(professorRepository.findById(id)
                         .orElseThrow(()->new CustomNotFoundException("Person with id: " + id + " not found.")));
-        return new ProfessorOutputDTO(prof.get());
+        return prof.get();
     }
 
     @Override

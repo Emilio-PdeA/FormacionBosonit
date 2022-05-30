@@ -18,7 +18,9 @@ public class ProfessorFullOutputDTO {
     private Integer id_person;
     private String comments;
     private String branch;
+    private List<CourseOutputDTO> courses;
     private List<StudentFullOutputDTO> students;
+
 
     //PERSON OUTPUT DTO
     private String user;
@@ -39,6 +41,7 @@ public class ProfessorFullOutputDTO {
         setId_person(prof.getId_person());
         setComments(prof.getComments());
         setBranch(prof.getBranch());
+        setCourses(prof.getCourses());
         setStudents(prof.getFullStudents());
         setUser(person.getUser());
         setPassword(person.getPassword());

@@ -2,6 +2,7 @@ package com.formacion.bosonit.EJ2.domain.entity;
 
 import com.formacion.bosonit.EJ2.domain.exception.PersonUnprocessableException;
 import com.formacion.bosonit.EJ2.infrastructure.controller.dto.input.PersonInputDTO;
+import com.formacion.bosonit.EJ2.infrastructure.controller.dto.output.PersonOutputDTO;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -108,17 +109,21 @@ public class Person {
 
     public Person(){}
     public Person(PersonInputDTO personInputDTO) throws PersonUnprocessableException {
-        setUser(personInputDTO.getUser());
-        setPassword(personInputDTO.getPassword());
-        setName(personInputDTO.getName());
-        setSurname(personInputDTO.getSurname());
-        setCompEmail(personInputDTO.getCompany_email());
-        setPersEmail(personInputDTO.getPersonal_email());
-        setCity(personInputDTO.getCity());
-        setActive(personInputDTO.getActive());
+        setUser(personInputDTO.user());
+        setPassword(personInputDTO.password());
+        setName(personInputDTO.name());
+        setSurname(personInputDTO.surname());
+        setCompEmail(personInputDTO.company_email());
+        setPersEmail(personInputDTO.personal_email());
+        setCity(personInputDTO.city());
+        setActive(true);
         setCreated_date();
-        setImagen_url(personInputDTO.getImagen_url());
+        setImagen_url(personInputDTO.image_url());
 
+    }
+
+    public PersonOutputDTO toOutputDto(){
+        return new PersonOutputDTO(id_persona,user,name+" "+surname,compEmail,persEmail,city,active,imagen_url,created_date,termination_date);
     }
 
 

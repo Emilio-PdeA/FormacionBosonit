@@ -13,4 +13,5 @@ import java.util.Optional;
 public interface PersonRepository_EJ3 extends JpaRepository<Person_EJ3,Integer> {
     List<Person_EJ3> findAll();
     Optional<Person_EJ3> findByUser(String user);
+
 }

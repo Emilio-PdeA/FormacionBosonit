@@ -26,5 +26,9 @@ public interface PersonServicesInter {
 
     PersonOutputDTO findByUser(String user);
 
+    void deleteById(Integer id);
+
+    void deleteByUser(String user);
+
     Person_EJ3 getPerson(Integer id);
 }

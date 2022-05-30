@@ -15,14 +15,18 @@ public class ProfessorOutputDTO {
     private Integer id_person;
     private String comments;
     private String branch;
+    private List<CourseOutputDTO> courses;
     private List<StudentOutputDTO> students;
+
 
     public ProfessorOutputDTO(Professor_EJ3 professor){
         setId_professor(professor.getId_professor());
         setId_person(professor.getId_person());
         setComments(professor.getComments());
         setBranch(professor.getBranch());
+        setCourses(professor.getCourses());
         setStudents(professor.getStudents());
+
     }
 
 }

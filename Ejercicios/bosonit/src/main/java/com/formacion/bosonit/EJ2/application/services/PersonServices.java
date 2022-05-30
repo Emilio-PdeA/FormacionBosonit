@@ -14,14 +14,14 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Service("PersonServices_EJ2")
+@Service
 public class PersonServices implements PersonServicesInter {
 
     @Autowired
     PersonRepository personRepository;
 
     @Override
-    public PersonOutputDTO addUser(PersonInputDTO personInputDTO) throws PersonUnprocessableException{
+    public Person addUser(PersonInputDTO personInputDTO) throws PersonUnprocessableException{
             Optional<Person> person = Optional.of(new Person(personInputDTO));
             try{
                 personRepository.save(person.get());
@@ -29,27 +29,26 @@ public class PersonServices implements PersonServicesInter {
                 throw new PersonUnprocessableException(personInputDTO + " could not be created.");
             }
 
-            PersonOutputDTO personOutputDTO = new PersonOutputDTO(person.get());
-            return personOutputDTO;
+            return person.get();
     }
 
     @Override
-    public PersonOutputDTO findUserId(Integer id){
+    public Person findUserId(Integer id){
         Optional<Person> person = Optional.ofNullable(personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException("Person with id: " + id + " not found.")));
-        return new PersonOutputDTO(person.get());
+        return person.get();
     }
 
     @Override
     public List<PersonOutputDTO> listUsers(){
         List <Person> people = personRepository.findAll();
-        return people.stream().map(pp->new PersonOutputDTO(pp)).collect(Collectors.toList());
+        return people.stream().map(pp->pp.toOutputDto()).collect(Collectors.toList());
     }
 
     @Override
-    public PersonOutputDTO findByUser(String user){
+    public Person findByUser(String user){
     Optional<Person> person = Optional.ofNullable(personRepository.findByUser(user)
                 .orElseThrow(() -> new  PersonNotFoundException("Person with username: " + user + " not found.")));
-        return new PersonOutputDTO(person.get());
+        return person.get();
     }
 
 

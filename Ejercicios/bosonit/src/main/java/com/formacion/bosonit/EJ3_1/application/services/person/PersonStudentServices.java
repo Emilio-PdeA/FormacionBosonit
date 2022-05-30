@@ -46,6 +46,16 @@ public class PersonStudentServices implements PersonServicesInter{
     }
 
     @Override
+    public void deleteById(Integer id) {
+
+    }
+
+    @Override
+    public void deleteByUser(String user) {
+
+    }
+
+    @Override
     public Person_EJ3 getPerson(Integer id) {
         Optional<Person_EJ3> person = Optional.ofNullable(personRepository.findById(id)
                 .orElseThrow(() -> new CustomNotFoundException("Person with id: " + id + " not found.")));

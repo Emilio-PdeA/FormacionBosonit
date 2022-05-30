@@ -10,7 +10,9 @@ import com.formacion.bosonit.EJ3_1.infrastructure.controller.dto.output.Professo
 import java.util.List;
 
 public interface ProfessorServicesInter {
-    ProfessorOutputDTO findUserId(String id);
+    void createFiveProfessor();
+
+    Professor_EJ3 findUserId(String id);
 
     ProfessorFullOutputDTO findFullUserId(String id);
 

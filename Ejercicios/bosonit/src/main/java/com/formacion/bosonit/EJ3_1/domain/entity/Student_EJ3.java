@@ -9,6 +9,7 @@ import lombok.NonNull;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity @Data
 @Table(name = "Students_EJ3")
@@ -42,6 +43,9 @@ public class Student_EJ3 {
 
     @Column @NonNull
     private String branch;
+
+    @OneToMany
+    List<Course_EJ3> courses;
 
 
     public void setBranch(String branch) throws CustomUnprocessableException{
